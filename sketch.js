@@ -40,6 +40,9 @@ function setup() {
     divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
   }
 
+  division = new Divisions(0,270,10,550);
+  division1 = new Divisions(800,270,10,550);
+
   //create 1st row of plinko objects
   for (var j = 75; j <=width; j=j+50) { 
     plinkos.push(new Plinko(j,75));
@@ -61,9 +64,7 @@ function setup() {
   }
 
   //create particle objects
- 
   
-
 }
  
 
@@ -73,6 +74,9 @@ function draw() {
  
   Engine.update(engine);
   ground.display();
+
+  division.display();
+  division1.display();
   
   //display the plinkos 
   for (var i = 0; i < plinkos.length; i++) {
@@ -85,7 +89,12 @@ function draw() {
   }
 
   //display the paricles 
-  if(frameCount % 30 === 0){
-    particles.push(new Particles(random(width/2-10, width/2+10), 10, 10));
+  if(frameCount % 60 === 0){
+    particles.push(new Particles(random(width/1-10, width/9+10), 10, 10));
   }
+
+  for(var i = 0; i < particles.length; i++){
+    particles[i].display();
+  }
+  
 }
